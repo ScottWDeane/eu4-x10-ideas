@@ -22,6 +22,41 @@ public class x10script {
         // get all the file names from inside the "input" folder
         List<String> inputFileNames = fetchAllInputFiles();
 
+        // loop through all our input files
+        for (String inputIdeasFileName : inputFileNames) {
+            FileOutputStream outputFile =
+                    prepareOutputFilePath("./demo/src/output/" + inputIdeasFileName);
+            File inputFile = new File("./demo/src/input/" + inputIdeasFileName);
+
+            try {
+                Scanner myReader = new Scanner(inputFile);
+                while (myReader.hasNextLine()) {
+                    // grab the line
+                    String currLine = myReader.nextLine();
+                    if (isLineAnIdeaWithNumbersToMultiply(currLine)) {
+                        currLine = modifyLine(currLine);
+                    }
+                    try {
+                        IOUtils.write(currLine + "\n", outputFile, "UTF-8");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Failed to write line.");
+                    }
+                }
+                // no more lines? close the reader
+                myReader.close();
+                try {
+                    outputFile.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                // close the output file
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void deleteAllOldOutputFiles(String outputFolder) {
         File[] files = new File(outputFolder).listFiles();
         if (files.length > 0) {

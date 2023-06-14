@@ -9,3 +9,19 @@ Prussian Space Marines are even more terrifying,
 Spain and Portugal colonize the Americas in 1/20th of the usual time, 
 Great Britain will never lose a naval engagement,
 just your usual EU4 OPness, except even more so.
+
+How to use?
+
+Clone repository.
+Run maven commands to resolve dependencies. Idk what they are, I just let VSCode's Maven integration auto-detect dependencies for me.
+In project, navigate to "demo/src"
+Create two folders: "input" and "output", so it looks like:
+  demo/src/input/
+  demo/src/output/
+Place any Ideas files into the /input/ folder. This can include the files "00_basic_ideas.txt", "00_country_ideas.txt", "zz_group_ideas.txt", and "zzz_default_idea.txt". 
+
+Also works for modded/new nations, such as Extended Timeline and Voltaire's Nightmare (and should work for any other mod too). Just find their unique Ideas files and slap 'em in the /input/ folder.
+
+Script should never need updating, unless Paradox decides to completely restructure their Ideas file formatting or structure, or maybe uses some sort of new annotation. Which I doubt they'll do, their code is reportedly spaghetti enough as is. Can't be worse than mine, though. I didn't even bother with proper TDD for this one.
+
+If this ever breaks, or you find a missing un-changed idea, feel free to email or otherwise message me.

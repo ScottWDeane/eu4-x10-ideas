@@ -1,6 +1,8 @@
 package x10;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class x10scriptTest {
@@ -13,7 +15,7 @@ public class x10scriptTest {
         String lineToModify = "nobles_loyalty_modifier = 0.1";
         String expectedOutput = "nobles_loyalty_modifier = 1.0";
         String modifiedLine = x10script.modifyLine(lineToModify);
-        Assertions.assertEquals(expectedOutput, modifiedLine);
+        assertEquals(expectedOutput, modifiedLine);
     }
 
     @Test
@@ -22,7 +24,7 @@ public class x10scriptTest {
         String lineToModify = "leader_siege = 1";
         String expectedOutput = "leader_siege = 10.0";
         String modifiedLine = x10script.modifyLine(lineToModify);
-        Assertions.assertEquals(expectedOutput, modifiedLine);
+        assertEquals(expectedOutput, modifiedLine);
     }
 
     @Test
@@ -31,7 +33,7 @@ public class x10scriptTest {
         String lineToModify = "development_cost = -0.05";
         String expectedOutput = "development_cost = -0.5";
         String modifiedLine = x10script.modifyLine(lineToModify);
-        Assertions.assertEquals(expectedOutput, modifiedLine);
+        assertEquals(expectedOutput, modifiedLine);
     }
 
 }

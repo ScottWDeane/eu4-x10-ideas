@@ -43,6 +43,18 @@ public class x10script {
         return allInputFiles;
     }
 
+    // use input file name to generate the output file path
+    public static FileOutputStream prepareOutputFilePath(String fileName) {
+        String outputFile = "./demo/src/output/" + fileName;
+        try {
+            FileOutputStream s = FileUtils.openOutputStream(new File(outputFile));
+            return s;
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
+    }
 
     public static Boolean isLineAnIdeaWithNumbersToMultiply(String line) {
         Pattern pattern = Pattern.compile("^.*\\b\\d+(\\.\\d+)?\\b.*$", Pattern.CASE_INSENSITIVE);

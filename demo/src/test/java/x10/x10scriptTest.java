@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 public class x10scriptTest {
     // I hate writing tests for file/directory manipulation in a windows environment (gross), so I'm
@@ -36,4 +37,19 @@ public class x10scriptTest {
         assertEquals(expectedOutput, modifiedLine);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"leader_siege = 1", "land_morale = 0.15", "infantry_power = 0.15",
+            "war_exhaustion = -0.03", "own_coast_naval_combat_bonus = 1",
+            "legitimacy = 1.5 #unique (it's the HRE :D)"})
+    public void whenGivenLineEndingInNumeric_returnTrue(String currLine) {
+        assertTrue(x10script.isLineAnIdeaWithNumbersToMultiply(currLine));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"has_country_flag = accepted_norse_ideas_flag",
+            "may_perform_slave_raid_on_same_religion = yes", "start = {",
+            "norse_ideas_a_wall_of_shields_for_the_king = {",})
+    public void whenGivenLineNOTEndingInNumeric_returnFalse(String currLine) {
+        assertFalse(x10script.isLineAnIdeaWithNumbersToMultiply(currLine));
+    }
 }

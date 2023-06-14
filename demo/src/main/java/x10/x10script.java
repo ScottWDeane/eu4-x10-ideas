@@ -12,6 +12,9 @@ public class x10script {
         // clear out our output folder
         deleteAllOldOutputFiles("./demo/src/output");
 
+        // get all the file names from inside the "input" folder
+        List<String> inputFileNames = fetchAllInputFiles();
+
     public static void deleteAllOldOutputFiles(String outputFolder) {
         File[] files = new File(outputFolder).listFiles();
         if (files.length > 0) {
@@ -21,6 +24,17 @@ public class x10script {
         }
     }
 
+    public static List<String> fetchAllInputFiles() {
+        // read from folder "input", which should be under ""./demo/src/input"
+        List<String> allInputFiles = new ArrayList<String>();
+        File[] files = new File("./demo/src/input").listFiles();
+        for (File file : files) {
+            if (file.isFile()) {
+                allInputFiles.add(file.getName());
+            }
+        }
+        return allInputFiles;
+    }
 
 
 

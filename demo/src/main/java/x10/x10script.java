@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+
 public class x10script {
     public static void main(String[] args) {
         System.out.println("Starting program.");
@@ -43,6 +44,11 @@ public class x10script {
     }
 
 
+    public static Boolean isLineAnIdeaWithNumbersToMultiply(String line) {
+        Pattern pattern = Pattern.compile("^.*\\b\\d+(\\.\\d+)?\\b.*$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(line);
+        return matcher.find();
+    }
 
     public static String modifyLine(String input) {
         Pattern pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");

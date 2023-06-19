@@ -14,11 +14,19 @@ just your usual EU4 OPness, except even more so.
 
 
 How to use?
+
+
 Option 1: just use my two existing mods up on Steam Workshop.
+
+
 For vanilla Eu4: https://steamcommunity.com/sharedfiles/filedetails/?id=2989025425
+
+
 For Extended Timeline: https://steamcommunity.com/sharedfiles/filedetails/?id=2989053021
 
-Option 2: do it yourself
+
+
+Option 2: run the script yourself
 1. Clone repository.
 2. Run maven commands to resolve dependencies. Idk what they are, I just let VSCode's Maven integration auto-detect dependencies for me.
 3. In project, navigate to "demo/src"

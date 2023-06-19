@@ -92,9 +92,15 @@ public class x10script {
     }
 
     public static Boolean isLineAnIdeaWithNumbersToMultiply(String line) {
-        Pattern pattern = Pattern.compile("^.*\\b\\d+(\\.\\d+)?\\b.*$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(line);
-        return matcher.find();
+        if (line.contains("adm_tech")) {
+            return false;
+        } else {
+            Pattern pattern =
+                    Pattern.compile("^.*\\b\\d+(\\.\\d+)?\\b.*$", Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(line);
+            return matcher.find();
+        }
+
     }
 
     public static String modifyLine(String input) {
